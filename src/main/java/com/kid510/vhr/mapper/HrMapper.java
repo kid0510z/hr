@@ -2,6 +2,8 @@ package com.kid510.vhr.mapper;
 
 import com.kid510.vhr.model.Hr;
 
+import java.util.List;
+
 public interface HrMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface HrMapper {
     int updateByPrimaryKeySelective(Hr record);
 
     int updateByPrimaryKey(Hr record);
+
+    List<Hr> selectAll();
 }
