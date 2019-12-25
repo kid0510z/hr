@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @Classname HrController
- * @Description TODO
+ * @Description hr人员的controller
  * @Date 2019/12/25 16:11
  * @Author kid
  */
@@ -19,8 +19,8 @@ public class HrController {
     @Autowired
     private HrService hrService;
 
-    @GetMapping("/findAllHr")
-    public List<Hr> findAllHr() {
-        return hrService.findAllHr();
+    @GetMapping("/sayHello")
+    public String findAllHr() {
+        return "hello";
     }
 }

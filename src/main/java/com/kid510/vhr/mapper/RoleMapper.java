@@ -1,6 +1,9 @@
 package com.kid510.vhr.mapper;
 
 import com.kid510.vhr.model.Role;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface RoleMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,6 @@ public interface RoleMapper {
     int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
+
+    List<Role> loadRolesByHrId(@Param("hrid") Integer hrid);
 }
