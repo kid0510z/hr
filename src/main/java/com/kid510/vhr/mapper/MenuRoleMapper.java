@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.MenuRole;
+import com.kid510.vhr.pojo.MenuRole;
 
 public interface MenuRoleMapper {
     int deleteByPrimaryKey(Integer id);

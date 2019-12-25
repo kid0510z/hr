@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.Nation;
+import com.kid510.vhr.pojo.Nation;
 
 public interface NationMapper {
     int deleteByPrimaryKey(Integer id);

@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.Role;
+import com.kid510.vhr.pojo.Role;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

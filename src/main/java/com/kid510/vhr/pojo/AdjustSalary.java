@@ -1,17 +1,17 @@
-package com.kid510.vhr.model;
+package com.kid510.vhr.pojo;
 
 import java.util.Date;
 
-public class Employeeremove {
+public class AdjustSalary {
     private Integer id;
 
     private Integer eid;
 
-    private Integer afterdepid;
+    private Date asdate;
 
-    private Integer afterjobid;
+    private Integer beforesalary;
 
-    private Date removedate;
+    private Integer aftersalary;
 
     private String reason;
 
@@ -33,28 +33,28 @@ public class Employeeremove {
         this.eid = eid;
     }
 
-    public Integer getAfterdepid() {
-        return afterdepid;
+    public Date getAsdate() {
+        return asdate;
     }
 
-    public void setAfterdepid(Integer afterdepid) {
-        this.afterdepid = afterdepid;
+    public void setAsdate(Date asdate) {
+        this.asdate = asdate;
     }
 
-    public Integer getAfterjobid() {
-        return afterjobid;
+    public Integer getBeforesalary() {
+        return beforesalary;
     }
 
-    public void setAfterjobid(Integer afterjobid) {
-        this.afterjobid = afterjobid;
+    public void setBeforesalary(Integer beforesalary) {
+        this.beforesalary = beforesalary;
     }
 
-    public Date getRemovedate() {
-        return removedate;
+    public Integer getAftersalary() {
+        return aftersalary;
     }
 
-    public void setRemovedate(Date removedate) {
-        this.removedate = removedate;
+    public void setAftersalary(Integer aftersalary) {
+        this.aftersalary = aftersalary;
     }
 
     public String getReason() {

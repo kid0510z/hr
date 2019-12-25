@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.Salary;
+import com.kid510.vhr.pojo.Salary;
 
 public interface SalaryMapper {
     int deleteByPrimaryKey(Integer id);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kid510.vhr.mapper.MsgContentMapper" >
-  <resultMap id="BaseResultMap" type="com.kid510.vhr.model.MsgContent" >
+  <resultMap id="BaseResultMap" type="com.kid510.vhr.pojo.MsgContent" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="message" property="message" jdbcType="VARCHAR" />
@@ -20,13 +20,13 @@
     delete from msgcontent
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.kid510.vhr.model.MsgContent" >
+  <insert id="insert" parameterType="com.kid510.vhr.pojo.MsgContent" >
     insert into msgcontent (id, title, message, 
       createDate)
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, 
       #{createdate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.kid510.vhr.model.MsgContent" >
+  <insert id="insertSelective" parameterType="com.kid510.vhr.pojo.MsgContent" >
     insert into msgcontent
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.model.MsgContent" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.pojo.MsgContent" >
     update msgcontent
     <set >
       <if test="title != null" >
@@ -72,7 +72,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.model.MsgContent" >
+  <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.pojo.MsgContent" >
     update msgcontent
     set title = #{title,jdbcType=VARCHAR},
       message = #{message,jdbcType=VARCHAR},

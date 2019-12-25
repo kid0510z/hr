@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.OpLog;
+import com.kid510.vhr.pojo.OpLog;
 
 public interface OpLogMapper {
     int deleteByPrimaryKey(Integer id);

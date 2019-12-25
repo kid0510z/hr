@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.HrRole;
+import com.kid510.vhr.pojo.HrRole;
 
 public interface HrRoleMapper {
     int deleteByPrimaryKey(Integer id);

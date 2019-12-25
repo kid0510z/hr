@@ -1,11 +1,9 @@
-package com.kid510.vhr.model;
+package com.kid510.vhr.pojo;
 
-public class Role {
+public class Politicsstatus {
     private Integer id;
 
     private String name;
-
-    private String namezh;
 
     public Integer getId() {
         return id;
@@ -21,13 +19,5 @@ public class Role {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
-    }
-
-    public String getNamezh() {
-        return namezh;
-    }
-
-    public void setNamezh(String namezh) {
-        this.namezh = namezh == null ? null : namezh.trim();
     }
 }

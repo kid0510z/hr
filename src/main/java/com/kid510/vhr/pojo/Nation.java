@@ -1,4 +1,4 @@
-package com.kid510.vhr.model;
+package com.kid510.vhr.pojo;
 
 public class Nation {
     private Integer id;

@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.Position;
+import com.kid510.vhr.pojo.Position;
 
 public interface PositionMapper {
     int deleteByPrimaryKey(Integer id);

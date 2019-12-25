@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kid510.vhr.mapper.PositionMapper" >
-  <resultMap id="BaseResultMap" type="com.kid510.vhr.model.Position" >
+  <resultMap id="BaseResultMap" type="com.kid510.vhr.pojo.Position" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
@@ -20,13 +20,13 @@
     delete from position
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.kid510.vhr.model.Position" >
+  <insert id="insert" parameterType="com.kid510.vhr.pojo.Position" >
     insert into position (id, name, createDate, 
       enabled)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, 
       #{enabled,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.kid510.vhr.model.Position" >
+  <insert id="insertSelective" parameterType="com.kid510.vhr.pojo.Position" >
     insert into position
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.model.Position" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.pojo.Position" >
     update position
     <set >
       <if test="name != null" >
@@ -72,7 +72,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.model.Position" >
+  <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.pojo.Position" >
     update position
     set name = #{name,jdbcType=VARCHAR},
       createDate = #{createdate,jdbcType=TIMESTAMP},

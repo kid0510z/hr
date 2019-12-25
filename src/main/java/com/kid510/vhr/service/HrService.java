@@ -2,15 +2,14 @@ package com.kid510.vhr.service;
 
 import com.kid510.vhr.mapper.HrMapper;
 import com.kid510.vhr.mapper.RoleMapper;
-import com.kid510.vhr.model.Hr;
-import com.kid510.vhr.model.Role;
+import com.kid510.vhr.pojo.Hr;
+import com.kid510.vhr.pojo.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

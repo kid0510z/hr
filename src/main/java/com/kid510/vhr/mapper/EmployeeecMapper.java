@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.Employeeec;
+import com.kid510.vhr.pojo.Employeeec;
 
 public interface EmployeeecMapper {
     int deleteByPrimaryKey(Integer id);

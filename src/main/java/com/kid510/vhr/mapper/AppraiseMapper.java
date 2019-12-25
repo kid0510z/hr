@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.Appraise;
+import com.kid510.vhr.pojo.Appraise;
 
 public interface AppraiseMapper {
     int deleteByPrimaryKey(Integer id);

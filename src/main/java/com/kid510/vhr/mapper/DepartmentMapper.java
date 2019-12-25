@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.Department;
+import com.kid510.vhr.pojo.Department;
 
 public interface DepartmentMapper {
     int deleteByPrimaryKey(Integer id);

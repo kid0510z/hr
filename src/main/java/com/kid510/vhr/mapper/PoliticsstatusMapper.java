@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.Politicsstatus;
+import com.kid510.vhr.pojo.Politicsstatus;
 
 public interface PoliticsstatusMapper {
     int deleteByPrimaryKey(Integer id);

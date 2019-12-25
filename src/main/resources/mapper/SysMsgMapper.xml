@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kid510.vhr.mapper.SysMsgMapper" >
-  <resultMap id="BaseResultMap" type="com.kid510.vhr.model.SysMsg" >
+  <resultMap id="BaseResultMap" type="com.kid510.vhr.pojo.SysMsg" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="mid" property="mid" jdbcType="INTEGER" />
     <result column="type" property="type" jdbcType="INTEGER" />
@@ -21,13 +21,13 @@
     delete from sysmsg
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.kid510.vhr.model.SysMsg" >
+  <insert id="insert" parameterType="com.kid510.vhr.pojo.SysMsg" >
     insert into sysmsg (id, mid, type, 
       hrid, state)
     values (#{id,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
       #{hrid,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.kid510.vhr.model.SysMsg" >
+  <insert id="insertSelective" parameterType="com.kid510.vhr.pojo.SysMsg" >
     insert into sysmsg
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.model.SysMsg" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.pojo.SysMsg" >
     update sysmsg
     <set >
       <if test="mid != null" >
@@ -82,7 +82,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.model.SysMsg" >
+  <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.pojo.SysMsg" >
     update sysmsg
     set mid = #{mid,jdbcType=INTEGER},
       type = #{type,jdbcType=INTEGER},

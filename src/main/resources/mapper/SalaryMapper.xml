@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kid510.vhr.mapper.SalaryMapper" >
-  <resultMap id="BaseResultMap" type="com.kid510.vhr.model.Salary" >
+  <resultMap id="BaseResultMap" type="com.kid510.vhr.pojo.Salary" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="basicSalary" property="basicsalary" jdbcType="INTEGER" />
     <result column="bonus" property="bonus" jdbcType="INTEGER" />
@@ -31,7 +31,7 @@
     delete from salary
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.kid510.vhr.model.Salary" >
+  <insert id="insert" parameterType="com.kid510.vhr.pojo.Salary" >
     insert into salary (id, basicSalary, bonus, 
       lunchSalary, trafficSalary, allSalary, 
       pensionBase, pensionPer, createDate, 
@@ -43,7 +43,7 @@
       #{medicalbase,jdbcType=INTEGER}, #{medicalper,jdbcType=REAL}, #{accumulationfundbase,jdbcType=INTEGER}, 
       #{accumulationfundper,jdbcType=REAL}, #{name,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.kid510.vhr.model.Salary" >
+  <insert id="insertSelective" parameterType="com.kid510.vhr.pojo.Salary" >
     insert into salary
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -134,7 +134,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.model.Salary" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.pojo.Salary" >
     update salary
     <set >
       <if test="basicsalary != null" >
@@ -179,7 +179,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.model.Salary" >
+  <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.pojo.Salary" >
     update salary
     set basicSalary = #{basicsalary,jdbcType=INTEGER},
       bonus = #{bonus,jdbcType=INTEGER},

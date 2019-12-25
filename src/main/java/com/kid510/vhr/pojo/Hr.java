@@ -1,4 +1,4 @@
-package com.kid510.vhr.model;
+package com.kid510.vhr.pojo;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

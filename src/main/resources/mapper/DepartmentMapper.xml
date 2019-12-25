@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kid510.vhr.mapper.DepartmentMapper" >
-  <resultMap id="BaseResultMap" type="com.kid510.vhr.model.Department" >
+  <resultMap id="BaseResultMap" type="com.kid510.vhr.pojo.Department" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="parentId" property="parentid" jdbcType="INTEGER" />
@@ -22,13 +22,13 @@
     delete from department
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.kid510.vhr.model.Department" >
+  <insert id="insert" parameterType="com.kid510.vhr.pojo.Department" >
     insert into department (id, name, parentId, 
       depPath, enabled, isParent)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, 
       #{deppath,jdbcType=VARCHAR}, #{enabled,jdbcType=BIT}, #{isparent,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.kid510.vhr.model.Department" >
+  <insert id="insertSelective" parameterType="com.kid510.vhr.pojo.Department" >
     insert into department
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -71,7 +71,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.model.Department" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.pojo.Department" >
     update department
     <set >
       <if test="name != null" >
@@ -92,7 +92,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.model.Department" >
+  <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.pojo.Department" >
     update department
     set name = #{name,jdbcType=VARCHAR},
       parentId = #{parentid,jdbcType=INTEGER},

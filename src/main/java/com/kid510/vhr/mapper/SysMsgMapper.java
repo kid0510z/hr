@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.SysMsg;
+import com.kid510.vhr.pojo.SysMsg;
 
 public interface SysMsgMapper {
     int deleteByPrimaryKey(Integer id);

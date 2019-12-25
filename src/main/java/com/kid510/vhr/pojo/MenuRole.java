@@ -1,9 +1,9 @@
-package com.kid510.vhr.model;
+package com.kid510.vhr.pojo;
 
-public class HrRole {
+public class MenuRole {
     private Integer id;
 
-    private Integer hrid;
+    private Integer mid;
 
     private Integer rid;
 
@@ -15,12 +15,12 @@ public class HrRole {
         this.id = id;
     }
 
-    public Integer getHrid() {
-        return hrid;
+    public Integer getMid() {
+        return mid;
     }
 
-    public void setHrid(Integer hrid) {
-        this.hrid = hrid;
+    public void setMid(Integer mid) {
+        this.mid = mid;
     }
 
     public Integer getRid() {

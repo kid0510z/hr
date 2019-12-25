@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.JObLevel;
+import com.kid510.vhr.pojo.JObLevel;
 
 public interface JObLevelMapper {
     int deleteByPrimaryKey(Integer id);

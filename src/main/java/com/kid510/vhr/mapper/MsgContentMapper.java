@@ -1,6 +1,6 @@
 package com.kid510.vhr.mapper;
 
-import com.kid510.vhr.model.MsgContent;
+import com.kid510.vhr.pojo.MsgContent;
 
 public interface MsgContentMapper {
     int deleteByPrimaryKey(Integer id);
