@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: kid0510
+    url: jdbc:mysql://167.179.74.55:3306/vhr?useUnicode=true&characterEncoding=UTF8
+server:
+  port: 9080
