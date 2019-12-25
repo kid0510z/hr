@@ -65,9 +65,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/doLogin")
                 .loginPage("/login")
                 .successHandler((request, response, authentication) -> {
-                    response.setContentType("applicaton/json;charset-utf-8");
+                    response.setContentType("applicaton/json;charset=utf-8");
                     PrintWriter out = response.getWriter();
-                    Hr hr = (Hr) authentication;
+                    Hr hr = (Hr) authentication.getPrincipal();
+                    // 将密码设置为null 不返回给前端
+                    hr.setPassword(null);
                     ResultResp ok = ResultResp.ok("登录成功!", hr);
                     // 将登录成功的结果相应前端
                     out.write(new ObjectMapper().writeValueAsString(ok));
@@ -76,7 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 })
                 .failureHandler((request, response, exception) -> {
-                    response.setContentType("applicaton/json;charset-utf-8");
+                    response.setContentType("applicaton/json;charset=utf-8");
                     PrintWriter out = response.getWriter();
                     ResultResp error = ResultResp.error("登录失败!");
                     if (exception instanceof LockedException) {
@@ -98,9 +100,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .logoutUrl("/logout")
                 .logoutSuccessHandler((request, response, authentication) -> {
-
+                    response.setContentType("application/json;charset=utf-8");
+                    PrintWriter writer = response.getWriter();
+                    writer.write(new ObjectMapper().writeValueAsString(ResultResp.ok("注销成功")));
+                    writer.flush();
+                    writer.close();
                 })
                 .permitAll()
                 .and()
