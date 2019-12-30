@@ -1,6 +1,7 @@
 package com.kid510.vhr.mapper;
 
 import com.kid510.vhr.pojo.Menu;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,5 +18,5 @@ public interface MenuMapper {
 
     int updateByPrimaryKey(Menu record);
 
-    List<Menu> getMenusByHrId(Integer id);
+    List<Menu> getMenusByHrId(@Param("hrId") Integer hrId);
 }

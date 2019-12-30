@@ -49,7 +49,7 @@
              INNER JOIN menu m2 ON m1.id = m2.parentId AND m2.enabled = TRUE
              INNER JOIN menu_role mr ON m2.id = mr.mid
              INNER JOIN hr_role hrr ON mr.rid = hrr.rid
-    WHERE hrr.hrid = 10
+    WHERE hrr.hrid = #{hrId}
       AND m1.enabled = TRUE
   </select>
 
