@@ -5,7 +5,7 @@ public class Department {
 
     private String name;
 
-    private Integer parentid;
+    private Integer parentId;
 
     private String deppath;
 
@@ -30,11 +30,11 @@ public class Department {
     }
 
     public Integer getParentid() {
-        return parentid;
+        return parentId;
     }
 
-    public void setParentid(Integer parentid) {
-        this.parentid = parentid;
+    public void setParentid(Integer parentId) {
+        this.parentId = parentId;
     }
 
     public String getDeppath() {

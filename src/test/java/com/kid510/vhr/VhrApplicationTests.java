@@ -8,6 +8,8 @@ class VhrApplicationTests {
 
     @Test
     void contextLoads() {
+        String str = "SysData";
+
     }
 
 }
