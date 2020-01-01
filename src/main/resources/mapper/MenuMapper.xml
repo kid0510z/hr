@@ -16,6 +16,7 @@
         </association>
     </resultMap>
 
+    <!--用作得到左侧菜单列表-->
     <resultMap id="Menu2" type="com.kid510.vhr.pojo.Menu" extends="BaseResultMap">
         <collection property="children" ofType="com.kid510.vhr.pojo.Menu">
             <id column="id2" property="id" jdbcType="INTEGER"/>
@@ -50,8 +51,25 @@
              INNER JOIN menu_role mr ON m2.id = mr.mid
              INNER JOIN hr_role hrr ON mr.rid = hrr.rid
     WHERE hrr.hrid = #{hrId}
-      AND m1.enabled = TRUE
+      AND m1.enabled = TRUE ORDER BY m2.id
   </select>
+
+    <!--得到所有菜单包括所需权限-->
+    <resultMap id="menusWithRole" type="com.kid510.vhr.pojo.Menu" extends="BaseResultMap">
+        <collection property="roles" ofType="com.kid510.vhr.pojo.Role">
+            <id column="rid" property="id" jdbcType="INTEGER"/>
+            <result column="rname" property="name" jdbcType="VARCHAR"/>
+            <result column="rnameZh" property="nameZh" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+
+    <select id="getAllMenusWithRole" resultMap="menusWithRole">
+        SELECT m.*, r.id AS rid, r.name AS rname, r.nameZh AS rnameZh
+        FROM menu m
+                 INNER JOIN menu_role mr ON m.id = mr.mid
+                 INNER JOIN role r ON mr.rid = r.id
+        ORDER BY m.id
+    </select>
 
     <sql id="Base_Column_List">
     id, url, path, component, name, iconCls, keepAlive, requireAuth, parentId, enabled

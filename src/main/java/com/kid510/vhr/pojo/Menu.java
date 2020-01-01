@@ -25,7 +25,12 @@ public class Menu implements Serializable {
 
     // 前端所需
     private Meta meta;
+
+    // 递归
     private List<Menu> children;
+    // 该菜单那些角色能访问
+    private List<Role> roles;
+
 
     public Integer getId() {
         return id;
@@ -105,5 +110,13 @@ public class Menu implements Serializable {
 
     public void setChildren(List<Menu> children) {
         this.children = children;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

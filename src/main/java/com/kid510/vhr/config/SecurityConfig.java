@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.*;
+import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
 import java.io.PrintWriter;
 
@@ -27,6 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private HrService hrService;
+    @Autowired
+    private CustomerFilterInvocationSecurityMetadataSource customerFilterInvocationSecurityMetadataSource;
+    @Autowired
+    private CustomerAccessDecisionManager customerAccessDecisionManager;
 
     /**
      * 设置用户身份校验的service
@@ -49,7 +55,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .anyRequest().authenticated()
+//                .anyRequest().authenticated()
+                .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
+                    @Override
+                    public <O extends FilterSecurityInterceptor> O postProcess(O o) {
+                        // 所需权限
+                        o.setSecurityMetadataSource(customerFilterInvocationSecurityMetadataSource);
+                        // 判断是否有该权限
+                        o.setAccessDecisionManager(customerAccessDecisionManager);
+                        return o;
+                    }
+                })
                 .and()
                 .formLogin()
                 .usernameParameter("username")
