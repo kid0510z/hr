@@ -16,15 +16,15 @@ import java.util.Map;
  */
 public class FastJsonUtils {
 
-    private static final SerializeConfig config;
+    private static final SerializeConfig CONFIG;
 
     static {
-        config = new SerializeConfig();
-        config.put(java.util.Date.class, new JSONLibDataFormatSerializer()); // 使用和json-lib兼容的日期输出格式
-        config.put(java.sql.Date.class, new JSONLibDataFormatSerializer()); // 使用和json-lib兼容的日期输出格式
+        CONFIG = new SerializeConfig();
+        CONFIG.put(java.util.Date.class, new JSONLibDataFormatSerializer()); // 使用和json-lib兼容的日期输出格式
+        CONFIG.put(java.sql.Date.class, new JSONLibDataFormatSerializer()); // 使用和json-lib兼容的日期输出格式
     }
 
-    private static final SerializerFeature[] features = {SerializerFeature.WriteMapNullValue, // 输出空置字段
+    private static final SerializerFeature[] FEATURES = {SerializerFeature.WriteMapNullValue, // 输出空置字段
             SerializerFeature.WriteNullListAsEmpty, // list字段如果为null，输出为[]，而不是null
             SerializerFeature.WriteNullNumberAsZero, // 数值字段如果为null，输出为0，而不是null
             SerializerFeature.WriteNullBooleanAsFalse, // Boolean字段如果为null，输出为false，而不是null
@@ -32,12 +32,12 @@ public class FastJsonUtils {
     };
 
 
-    public static String convertObjectToJSON(Object object) {
-        return JSON.toJSONString(object, config, features);
+    public static String convertObjectToJson(Object object) {
+        return JSON.toJSONString(object, CONFIG, FEATURES);
     }
 
-    public static String toJSONNoFeatures(Object object) {
-        return JSON.toJSONString(object, config);
+    public static String toJsonNoFeatures(Object object) {
+        return JSON.toJSONString(object, CONFIG);
     }
 
 

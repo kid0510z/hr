@@ -84,6 +84,7 @@ public class Hr implements UserDetails {
         this.enabled = enabled;
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
@@ -121,6 +122,7 @@ public class Hr implements UserDetails {
         return authorities;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }

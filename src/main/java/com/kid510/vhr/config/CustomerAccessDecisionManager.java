@@ -31,7 +31,7 @@ public class CustomerAccessDecisionManager implements AccessDecisionManager {
         // 遍历访问该接口所需要的角色
         for (ConfigAttribute configAttribute : collection) {
             String needRole = configAttribute.getAttribute();
-            if (needRole.equals("ROLE_LOGIN")) {
+            if ("ROLE_LOGIN".equals(needRole)) {
                 return;
             }
             // 当前登录人所拥有的角色
