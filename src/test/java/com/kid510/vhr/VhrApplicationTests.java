@@ -16,7 +16,7 @@ class VhrApplicationTests {
         List<Menu> menus = new ArrayList<>();
         menus.add(menu);
         menu.setId(1);
-        String s = FastJsonUtils.convertObjectToJSON(menus);
+        String s = FastJsonUtils.convertObjectToJson(menus);
         System.out.println("s = " + s);
 
     }

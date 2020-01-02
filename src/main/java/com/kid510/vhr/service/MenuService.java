@@ -41,7 +41,7 @@ public class MenuService {
         if (StringUtils.isEmpty(redisData)) {
             log.info("菜单对应权限----redis数据为空，数据库查询");
             menus = menuMapper.getAllMenusWithRole();
-            String jsonStr = FastJsonUtils.convertObjectToJSON(menus);
+            String jsonStr = FastJsonUtils.convertObjectToJson(menus);
             redisTemplate.boundValueOps(SystemConfigEnum.AllMenusWithRole.getName()).set(jsonStr);
         } else {
             log.info("菜单对应权限----从redis读取");
