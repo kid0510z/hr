@@ -11,6 +11,7 @@ import org.springframework.security.authentication.*;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -45,6 +46,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(hrService);
     }
 
+    /**
+     * 忽略
+     *
+     * @param web
+     * @throws Exception
+     */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().mvcMatchers("/login");
+    }
 
     /**
      * 配置 基本设置
