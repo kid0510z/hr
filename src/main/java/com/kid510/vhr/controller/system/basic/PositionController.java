@@ -1,8 +1,8 @@
-package com.kid510.vhr.controller.system;
+package com.kid510.vhr.controller.system.basic;
 
 import com.kid510.vhr.common.resp.ResultResp;
 import com.kid510.vhr.pojo.Position;
-import com.kid510.vhr.service.system.BasicService;
+import com.kid510.vhr.service.system.basic.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,10 +17,10 @@ import java.util.List;
  * @Author kid
  */
 @RestController
-@RequestMapping("/system/basic")
-public class BasicController {
+@RequestMapping("/system/basic/position")
+public class PositionController {
     @Autowired
-    private BasicService basicService;
+    private PositionService positionService;
 
     /**
      * 查询所有职位
@@ -29,7 +29,7 @@ public class BasicController {
      */
     @GetMapping("/")
     public ResultResp getAllPos() {
-        List<Position> list = basicService.getAllPos();
+        List<Position> list = positionService.getAllPos();
         return ResultResp.ok("ok", list);
     }
 
@@ -40,7 +40,7 @@ public class BasicController {
      */
     @PostMapping("/")
     public ResultResp addPos(@Valid @RequestBody Position position) {
-        return basicService.addPos(position);
+        return positionService.addPos(position);
     }
 
     /**
@@ -51,7 +51,7 @@ public class BasicController {
      */
     @DeleteMapping("/{id}")
     public ResultResp delPos(@PathVariable Integer id) {
-        return basicService.delPos(id);
+        return positionService.delPos(id);
     }
 
     /**
@@ -62,7 +62,7 @@ public class BasicController {
      */
     @DeleteMapping("/")
     public ResultResp delPosMany(Integer[] ids) {
-        return basicService.delPosMany(ids);
+        return positionService.delPosMany(ids);
     }
 
     /**
@@ -74,6 +74,6 @@ public class BasicController {
      */
     @PutMapping("/{id}")
     public ResultResp updatePos(@PathVariable Integer id, @Valid @RequestBody Position position) {
-        return basicService.updatePos(id, position);
+        return positionService.updatePos(id, position);
     }
 }

@@ -1,4 +1,4 @@
-package com.kid510.vhr.service.system;
+package com.kid510.vhr.service.system.basic;
 
 import com.kid510.vhr.common.resp.ResultResp;
 import com.kid510.vhr.mapper.PositionMapper;
@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @Author kid
  */
 @Service
-public class BasicService {
+public class PositionService {
     @Autowired
     private PositionMapper positionMapper;
 

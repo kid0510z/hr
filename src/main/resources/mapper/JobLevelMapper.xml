@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kid510.vhr.mapper.JObLevelMapper" >
-  <resultMap id="BaseResultMap" type="com.kid510.vhr.pojo.JObLevel" >
+<mapper namespace="com.kid510.vhr.mapper.JobLevelMapper" >
+  <resultMap id="BaseResultMap" type="com.kid510.vhr.pojo.JobLevel" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="titleLevel" property="titlelevel" jdbcType="CHAR" />
+    <result column="titleLevel" property="titleLevel" jdbcType="CHAR" />
     <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
     <result column="enabled" property="enabled" jdbcType="BIT" />
   </resultMap>
@@ -17,17 +17,29 @@
     from joblevel
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getAllJobLevel" resultMap="BaseResultMap">
+    select * from joblevel
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from joblevel
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.kid510.vhr.pojo.JObLevel" >
+
+  <delete id="deleteByPrimaryKeyMany">
+    delete from joblevel
+    where id in
+    <foreach collection="ids" open="(" close=")" separator="," item="item">
+      #{item}
+    </foreach>
+  </delete>
+  <insert id="insert" parameterType="com.kid510.vhr.pojo.JobLevel" >
     insert into joblevel (id, name, titleLevel, 
       createDate, enabled)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{titlelevel,jdbcType=CHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{titleLevel,jdbcType=CHAR},
       #{createDate,jdbcType=TIMESTAMP}, #{enabled,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.kid510.vhr.pojo.JObLevel" >
+  <insert id="insertSelective" parameterType="com.kid510.vhr.pojo.JobLevel" >
     insert into joblevel
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -36,7 +48,7 @@
       <if test="name != null" >
         name,
       </if>
-      <if test="titlelevel != null" >
+      <if test="titleLevel != null" >
         titleLevel,
       </if>
       <if test="createDate != null" >
@@ -53,8 +65,8 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="titlelevel != null" >
-        #{titlelevel,jdbcType=CHAR},
+      <if test="titleLevel != null" >
+        #{titleLevel,jdbcType=CHAR},
       </if>
       <if test="createDate != null" >
         #{createDate,jdbcType=TIMESTAMP},
@@ -64,14 +76,14 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.pojo.JObLevel" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.pojo.JobLevel" >
     update joblevel
     <set >
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="titlelevel != null" >
-        titleLevel = #{titlelevel,jdbcType=CHAR},
+      <if test="titleLevel != null" >
+        titleLevel = #{titleLevel,jdbcType=CHAR},
       </if>
       <if test="createDate != null" >
         createDate = #{createDate,jdbcType=TIMESTAMP},
@@ -82,10 +94,10 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.pojo.JObLevel" >
+  <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.pojo.JobLevel" >
     update joblevel
     set name = #{name,jdbcType=VARCHAR},
-      titleLevel = #{titlelevel,jdbcType=CHAR},
+      titleLevel = #{titleLevel,jdbcType=CHAR},
       createDate = #{createDate,jdbcType=TIMESTAMP},
       enabled = #{enabled,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}

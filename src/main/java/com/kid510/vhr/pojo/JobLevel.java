@@ -1,13 +1,16 @@
 package com.kid510.vhr.pojo;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-public class JObLevel {
+public class JobLevel {
     private Integer id;
 
+    @NotNull(message = "职称名称不能为空")
     private String name;
 
-    private String titlelevel;
+    @NotNull(message = "职称类型不能为空")
+    private String titleLevel;
 
     private Date createDate;
 
@@ -26,22 +29,22 @@ public class JObLevel {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
-    public String getTitlelevel() {
-        return titlelevel;
+    public String getTitleLevel() {
+        return titleLevel;
     }
 
-    public void setTitlelevel(String titlelevel) {
-        this.titlelevel = titlelevel == null ? null : titlelevel.trim();
+    public void setTitleLevel(String titleLevel) {
+        this.titleLevel = titleLevel;
     }
 
-    public Date getCreatedate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreatedate(Date createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
