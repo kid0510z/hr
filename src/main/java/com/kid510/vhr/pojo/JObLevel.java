@@ -9,7 +9,7 @@ public class JObLevel {
 
     private String titlelevel;
 
-    private Date createdate;
+    private Date createDate;
 
     private Boolean enabled;
 
@@ -38,11 +38,11 @@ public class JObLevel {
     }
 
     public Date getCreatedate() {
-        return createdate;
+        return createDate;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
+    public void setCreatedate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public Boolean getEnabled() {

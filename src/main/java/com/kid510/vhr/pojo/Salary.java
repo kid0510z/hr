@@ -19,7 +19,7 @@ public class Salary {
 
     private Float pensionper;
 
-    private Date createdate;
+    private Date createDate;
 
     private Integer medicalbase;
 
@@ -96,11 +96,11 @@ public class Salary {
     }
 
     public Date getCreatedate() {
-        return createdate;
+        return createDate;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
+    public void setCreatedate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public Integer getMedicalbase() {

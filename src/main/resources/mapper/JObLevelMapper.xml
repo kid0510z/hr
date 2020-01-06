@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="titleLevel" property="titlelevel" jdbcType="CHAR" />
-    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
     <result column="enabled" property="enabled" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -25,7 +25,7 @@
     insert into joblevel (id, name, titleLevel, 
       createDate, enabled)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{titlelevel,jdbcType=CHAR}, 
-      #{createdate,jdbcType=TIMESTAMP}, #{enabled,jdbcType=BIT})
+      #{createDate,jdbcType=TIMESTAMP}, #{enabled,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.kid510.vhr.pojo.JObLevel" >
     insert into joblevel
@@ -39,7 +39,7 @@
       <if test="titlelevel != null" >
         titleLevel,
       </if>
-      <if test="createdate != null" >
+      <if test="createDate != null" >
         createDate,
       </if>
       <if test="enabled != null" >
@@ -56,8 +56,8 @@
       <if test="titlelevel != null" >
         #{titlelevel,jdbcType=CHAR},
       </if>
-      <if test="createdate != null" >
-        #{createdate,jdbcType=TIMESTAMP},
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="enabled != null" >
         #{enabled,jdbcType=BIT},
@@ -73,8 +73,8 @@
       <if test="titlelevel != null" >
         titleLevel = #{titlelevel,jdbcType=CHAR},
       </if>
-      <if test="createdate != null" >
-        createDate = #{createdate,jdbcType=TIMESTAMP},
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="enabled != null" >
         enabled = #{enabled,jdbcType=BIT},
@@ -86,7 +86,7 @@
     update joblevel
     set name = #{name,jdbcType=VARCHAR},
       titleLevel = #{titlelevel,jdbcType=CHAR},
-      createDate = #{createdate,jdbcType=TIMESTAMP},
+      createDate = #{createDate,jdbcType=TIMESTAMP},
       enabled = #{enabled,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>

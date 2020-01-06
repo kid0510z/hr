@@ -5,9 +5,12 @@ spring:
     password: kid0510
     url: jdbc:mysql:///vhr?useUnicode=true&characterEncoding=UTF8&serverTimezone=UTC
   redis:
-    host: 167.179.74.55
+    host: 127.0.0.1
     port: 6379
     database: 0
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
 server:
   port: 9080
 mybatis:

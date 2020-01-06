@@ -10,7 +10,7 @@
     <result column="allSalary" property="allsalary" jdbcType="INTEGER" />
     <result column="pensionBase" property="pensionbase" jdbcType="INTEGER" />
     <result column="pensionPer" property="pensionper" jdbcType="REAL" />
-    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
     <result column="medicalBase" property="medicalbase" jdbcType="INTEGER" />
     <result column="medicalPer" property="medicalper" jdbcType="REAL" />
     <result column="accumulationFundBase" property="accumulationfundbase" jdbcType="INTEGER" />
@@ -39,7 +39,7 @@
       accumulationFundPer, name)
     values (#{id,jdbcType=INTEGER}, #{basicsalary,jdbcType=INTEGER}, #{bonus,jdbcType=INTEGER}, 
       #{lunchsalary,jdbcType=INTEGER}, #{trafficsalary,jdbcType=INTEGER}, #{allsalary,jdbcType=INTEGER}, 
-      #{pensionbase,jdbcType=INTEGER}, #{pensionper,jdbcType=REAL}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{pensionbase,jdbcType=INTEGER}, #{pensionper,jdbcType=REAL}, #{createDate,jdbcType=TIMESTAMP},
       #{medicalbase,jdbcType=INTEGER}, #{medicalper,jdbcType=REAL}, #{accumulationfundbase,jdbcType=INTEGER}, 
       #{accumulationfundper,jdbcType=REAL}, #{name,jdbcType=VARCHAR})
   </insert>
@@ -70,7 +70,7 @@
       <if test="pensionper != null" >
         pensionPer,
       </if>
-      <if test="createdate != null" >
+      <if test="createDate != null" >
         createDate,
       </if>
       <if test="medicalbase != null" >
@@ -114,8 +114,8 @@
       <if test="pensionper != null" >
         #{pensionper,jdbcType=REAL},
       </if>
-      <if test="createdate != null" >
-        #{createdate,jdbcType=TIMESTAMP},
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="medicalbase != null" >
         #{medicalbase,jdbcType=INTEGER},
@@ -158,8 +158,8 @@
       <if test="pensionper != null" >
         pensionPer = #{pensionper,jdbcType=REAL},
       </if>
-      <if test="createdate != null" >
-        createDate = #{createdate,jdbcType=TIMESTAMP},
+      <if test="createDate != null" >
+        createDate = #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="medicalbase != null" >
         medicalBase = #{medicalbase,jdbcType=INTEGER},
@@ -188,7 +188,7 @@
       allSalary = #{allsalary,jdbcType=INTEGER},
       pensionBase = #{pensionbase,jdbcType=INTEGER},
       pensionPer = #{pensionper,jdbcType=REAL},
-      createDate = #{createdate,jdbcType=TIMESTAMP},
+      createDate = #{createDate,jdbcType=TIMESTAMP},
       medicalBase = #{medicalbase,jdbcType=INTEGER},
       medicalPer = #{medicalper,jdbcType=REAL},
       accumulationFundBase = #{accumulationfundbase,jdbcType=INTEGER},

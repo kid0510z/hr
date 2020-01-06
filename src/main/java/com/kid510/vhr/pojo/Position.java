@@ -1,13 +1,15 @@
 package com.kid510.vhr.pojo;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class Position {
     private Integer id;
 
+    @NotNull(message = "职位名称不能为空")
     private String name;
 
-    private Date createdate;
+    private Date createDate;
 
     private Boolean enabled;
 
@@ -27,12 +29,12 @@ public class Position {
         this.name = name == null ? null : name.trim();
     }
 
-    public Date getCreatedate() {
-        return createdate;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public Boolean getEnabled() {

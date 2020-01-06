@@ -1,4 +1,4 @@
-package com.kid510.vhr.service;
+package com.kid510.vhr.service.config;
 
 import com.kid510.vhr.mapper.HrMapper;
 import com.kid510.vhr.mapper.RoleMapper;

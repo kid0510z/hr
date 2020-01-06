@@ -9,7 +9,7 @@ public class MsgContent {
 
     private String message;
 
-    private Date createdate;
+    private Date createDate;
 
     public Integer getId() {
         return id;
@@ -36,10 +36,10 @@ public class MsgContent {
     }
 
     public Date getCreatedate() {
-        return createdate;
+        return createDate;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
+    public void setCreatedate(Date createDate) {
+        this.createDate = createDate;
     }
 }

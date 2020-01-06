@@ -3,7 +3,7 @@ package com.kid510.vhr.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kid510.vhr.common.resp.ResultResp;
 import com.kid510.vhr.pojo.Hr;
-import com.kid510.vhr.service.HrService;
+import com.kid510.vhr.service.config.HrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,7 +1,7 @@
-package com.kid510.vhr.controller;
+package com.kid510.vhr.controller.config;
 
 import com.kid510.vhr.common.resp.ResultResp;
-import com.kid510.vhr.service.SysConfigService;
+import com.kid510.vhr.service.config.SysConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

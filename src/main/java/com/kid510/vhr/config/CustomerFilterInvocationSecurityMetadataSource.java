@@ -2,7 +2,7 @@ package com.kid510.vhr.config;
 
 import com.kid510.vhr.pojo.Menu;
 import com.kid510.vhr.pojo.Role;
-import com.kid510.vhr.service.MenuService;
+import com.kid510.vhr.service.config.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
