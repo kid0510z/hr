@@ -1,104 +1,116 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kid510.vhr.mapper.DepartmentMapper" >
-  <resultMap id="BaseResultMap" type="com.kid510.vhr.pojo.Department" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="parentId" property="parentId" jdbcType="INTEGER" />
-    <result column="depPath" property="deppath" jdbcType="VARCHAR" />
-    <result column="enabled" property="enabled" jdbcType="BIT" />
-    <result column="isParent" property="isparent" jdbcType="BIT" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, name, parentId, depPath, enabled, isParent
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from department
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from department
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.kid510.vhr.pojo.Department" >
-    insert into department (id, name, parentId, 
-      depPath, enabled, isParent)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER},
-      #{deppath,jdbcType=VARCHAR}, #{enabled,jdbcType=BIT}, #{isparent,jdbcType=BIT})
-  </insert>
-  <insert id="insertSelective" parameterType="com.kid510.vhr.pojo.Department" >
-    insert into department
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="parentId != null" >
-        parentId,
-      </if>
-      <if test="deppath != null" >
-        depPath,
-      </if>
-      <if test="enabled != null" >
-        enabled,
-      </if>
-      <if test="isparent != null" >
-        isParent,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="parentId != null" >
-        #{parentId,jdbcType=INTEGER},
-      </if>
-      <if test="deppath != null" >
-        #{deppath,jdbcType=VARCHAR},
-      </if>
-      <if test="enabled != null" >
-        #{enabled,jdbcType=BIT},
-      </if>
-      <if test="isparent != null" >
-        #{isparent,jdbcType=BIT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.pojo.Department" >
-    update department
-    <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="parentId != null" >
-        parentId = #{parentId,jdbcType=INTEGER},
-      </if>
-      <if test="deppath != null" >
-        depPath = #{deppath,jdbcType=VARCHAR},
-      </if>
-      <if test="enabled != null" >
-        enabled = #{enabled,jdbcType=BIT},
-      </if>
-      <if test="isparent != null" >
-        isParent = #{isparent,jdbcType=BIT},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.pojo.Department" >
-    update department
-    set name = #{name,jdbcType=VARCHAR},
-      parentId = #{parentId,jdbcType=INTEGER},
-      depPath = #{deppath,jdbcType=VARCHAR},
-      enabled = #{enabled,jdbcType=BIT},
-      isParent = #{isparent,jdbcType=BIT}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.kid510.vhr.mapper.DepartmentMapper">
+    <resultMap id="BaseResultMap" type="com.kid510.vhr.pojo.Department">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="parentId" property="parentId" jdbcType="INTEGER"/>
+        <result column="depPath" property="depPath" jdbcType="VARCHAR"/>
+        <result column="enabled" property="enabled" jdbcType="BIT"/>
+        <result column="isParent" property="isParent" jdbcType="BIT"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, name, parentId, depPath, enabled, isParent
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from department
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        DELETE
+        FROM department
+        WHERE id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.kid510.vhr.pojo.Department">
+        INSERT INTO department (id, name, parentId,
+                                depPath, enabled, isParent)
+        VALUES (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER},
+                #{depPath,jdbcType=VARCHAR}, #{enabled,jdbcType=BIT}, #{isParent,jdbcType=BIT})
+    </insert>
+    <insert id="insertSelective" parameterType="com.kid510.vhr.pojo.Department">
+        insert into department
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="parentId != null">
+                parentId,
+            </if>
+            <if test="depPath != null">
+                depPath,
+            </if>
+            <if test="enabled != null">
+                enabled,
+            </if>
+            <if test="isParent != null">
+                isParent,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=INTEGER},
+            </if>
+            <if test="depPath != null">
+                #{depPath,jdbcType=VARCHAR},
+            </if>
+            <if test="enabled != null">
+                #{enabled,jdbcType=BIT},
+            </if>
+            <if test="isParent != null">
+                #{isParent,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.kid510.vhr.pojo.Department">
+        update department
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                parentId = #{parentId,jdbcType=INTEGER},
+            </if>
+            <if test="depPath != null">
+                depPath = #{depPath,jdbcType=VARCHAR},
+            </if>
+            <if test="enabled != null">
+                enabled = #{enabled,jdbcType=BIT},
+            </if>
+            <if test="isParent != null">
+                isParent = #{isParent,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.pojo.Department">
+        UPDATE department
+        SET name     = #{name,jdbcType=VARCHAR},
+            parentId = #{parentId,jdbcType=INTEGER},
+            depPath  = #{depPath,jdbcType=VARCHAR},
+            enabled  = #{enabled,jdbcType=BIT},
+            isParent = #{isParent,jdbcType=BIT}
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <resultMap id="AllDeptWithChildren" type="com.kid510.vhr.pojo.Department" extends="BaseResultMap">
+        <collection property="children" ofType="com.kid510.vhr.pojo.Department"
+                    select="com.kid510.vhr.mapper.DepartmentMapper.getAllDepartment" column="id"/>
+    </resultMap>
+
+    <select id="getAllDepartment" resultMap="AllDeptWithChildren" parameterType="integer">
+        SELECT *
+        FROM department
+        WHERE parentId = #{pid}
+    </select>
 </mapper>

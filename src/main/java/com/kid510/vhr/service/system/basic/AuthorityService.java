@@ -1,9 +1,11 @@
 package com.kid510.vhr.service.system.basic;
 
+import com.kid510.vhr.common.enums.SystemConfigEnum;
 import com.kid510.vhr.config.CustomException;
 import com.kid510.vhr.mapper.RoleMapper;
 import com.kid510.vhr.pojo.Role;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
@@ -19,6 +21,8 @@ import java.util.List;
 @Service
 public class AuthorityService {
 
+    @Autowired
+    private StringRedisTemplate redisTemplate;
     @Autowired
     private RoleMapper roleMapper;
 
@@ -36,9 +40,10 @@ public class AuthorityService {
             // 手动强制回滚
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             throw new CustomException("修改角色权限失败！");
-
         }
 
+        // 清除reids
+        redisTemplate.delete(SystemConfigEnum.AllMenusWithRole.getName());
     }
 
     public void addRole(Role role) {
@@ -56,5 +61,7 @@ public class AuthorityService {
         roleMapper.deleteAuthByRid(rid);
         //角色表
         roleMapper.deleteByPrimaryKey(rid);
+        // 清除redis 菜单所需角色
+        redisTemplate.delete(SystemConfigEnum.AllMenusWithRole.getName());
     }
 }
