@@ -8,7 +8,8 @@ package com.kid510.vhr.common.enums;
  */
 public enum SystemConfigEnum {
 
-    AllMenusWithRole("AllMenusWithRole","菜单列表以及所需的角色");
+    AllMenusWithRole("AllMenusWithRole","菜单列表以及所需的角色"),
+    AllMenusWithChildren("AllMenusWithChildren","菜单列表树形");
 
     private String name;
     private String desc;

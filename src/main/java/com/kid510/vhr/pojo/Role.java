@@ -1,10 +1,14 @@
 package com.kid510.vhr.pojo;
 
+import javax.validation.constraints.NotNull;
+
 public class Role {
     private Integer id;
 
+    @NotNull(message = "角色名称不能为空")
     private String name;
 
+    @NotNull(message = "角色中文名称不能为空")
     private String nameZh;
 
     public Integer getId() {

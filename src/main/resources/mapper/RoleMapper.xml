@@ -7,8 +7,8 @@
         <result column="nameZh" property="nameZh" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, name, nameZh
-  </sql>
+        id, name, nameZh
+    </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
@@ -16,15 +16,14 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from role
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        DELETE
+        FROM role
+        WHERE id = #{id,jdbcType=INTEGER}
+    </delete>
     <insert id="insert" parameterType="com.kid510.vhr.pojo.Role">
-    insert into role (id, name, nameZh
-      )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{nameZh,jdbcType=VARCHAR}
-      )
-  </insert>
+        INSERT INTO role (id, name, nameZh)
+        VALUES (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{nameZh,jdbcType=VARCHAR})
+    </insert>
     <insert id="insertSelective" parameterType="com.kid510.vhr.pojo.Role">
         insert into role
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -63,13 +62,28 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.kid510.vhr.pojo.Role">
-    update role
-    set name = #{name,jdbcType=VARCHAR},
-      nameZh = #{nameZh,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        UPDATE role
+        SET name   = #{name,jdbcType=VARCHAR},
+            nameZh = #{nameZh,jdbcType=VARCHAR}
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
 
-  <select id="loadRolesByHrId" resultMap="BaseResultMap">
-    SELECT r.* FROM hr_role hr INNER JOIN role r ON hr.rid = r.id WHERE hr.hrid=#{hrid}
-  </select>
+    <select id="loadRolesByHrId" resultMap="BaseResultMap">
+        SELECT r.*
+        FROM hr_role hr
+                 INNER JOIN role r ON hr.rid = r.id
+        WHERE hr.hrid = #{hrid}
+    </select>
+
+    <select id="getAllRoles" resultMap="BaseResultMap">
+        SELECT *
+        FROM ROLE
+    </select>
+
+    <insert id="insertAuth">
+        INSERT INTO menu_role(rid,mid) VALUE
+        <foreach collection="mids"  item="item" separator=",">
+            (#{rid},#{item})
+        </foreach>
+    </insert>
 </mapper>

@@ -19,7 +19,7 @@ import java.util.List;
  * @Author kid
  */
 @Service
-public class HrService implements UserDetailsService {
+public class HrServiceConfig implements UserDetailsService {
     @Autowired
     private HrMapper hrMapper;
 

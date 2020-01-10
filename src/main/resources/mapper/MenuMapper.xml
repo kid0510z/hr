@@ -55,7 +55,7 @@
   </select>
 
     <!--得到所有菜单包括所需权限-->
-    <resultMap id="menusWithRole" type="com.kid510.vhr.pojo.Menu" extends="BaseResultMap">
+    <resultMap id="MenusWithRole" type="com.kid510.vhr.pojo.Menu" extends="BaseResultMap">
         <collection property="roles" ofType="com.kid510.vhr.pojo.Role">
             <id column="rid" property="id" jdbcType="INTEGER"/>
             <result column="rname" property="name" jdbcType="VARCHAR"/>
@@ -63,12 +63,36 @@
         </collection>
     </resultMap>
 
-    <select id="getAllMenusWithRole" resultMap="menusWithRole">
+    <select id="getAllMenusWithRole" resultMap="MenusWithRole">
         SELECT m.*, r.id AS rid, r.name AS rname, r.nameZh AS rnameZh
         FROM menu m
                  INNER JOIN menu_role mr ON m.id = mr.mid
                  INNER JOIN role r ON mr.rid = r.id
         ORDER BY m.id
+    </select>
+
+    <resultMap id="MenusWithChildren" type="com.kid510.vhr.pojo.Menu">
+        <id column="id1" property="id" jdbcType="INTEGER"/>
+        <result column="name1" property="name" jdbcType="VARCHAR"/>
+        <collection property="children" ofType="com.kid510.vhr.pojo.Menu">
+            <id column="id2" property="id" jdbcType="INTEGER"/>
+            <result column="name2" property="name" jdbcType="VARCHAR"/>
+            <collection property="children" ofType="com.kid510.vhr.pojo.Menu">
+                <id column="id3" property="id" jdbcType="INTEGER"/>
+                <result column="name3" property="name" jdbcType="VARCHAR"/>
+            </collection>
+        </collection>
+    </resultMap>
+    <select id="getAllMenus" resultMap="MenusWithChildren">
+        SELECT m1.id   AS id1,
+               m1.name AS name1,
+               m2.id   AS id2,
+               m2.name AS name2,
+               m3.id   AS id3,
+               m3.name AS name3
+        FROM menu m1
+             INNER JOIN menu m2 ON m1.id = m2.parentId
+             INNER JOIN menu m3 ON m2.id = m3.parentId AND m3.enabled = TRUE
     </select>
 
     <sql id="Base_Column_List">

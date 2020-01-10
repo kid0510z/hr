@@ -3,7 +3,7 @@ package com.kid510.vhr.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kid510.vhr.common.resp.ResultResp;
 import com.kid510.vhr.pojo.Hr;
-import com.kid510.vhr.service.config.HrService;
+import com.kid510.vhr.service.config.HrServiceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,10 +13,16 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
@@ -29,7 +35,7 @@ import java.io.PrintWriter;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private HrService hrService;
+    private HrServiceConfig hrServiceConfig;
     @Autowired
     private CustomerFilterInvocationSecurityMetadataSource customerFilterInvocationSecurityMetadataSource;
     @Autowired
@@ -43,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(hrService);
+        auth.userDetailsService(hrServiceConfig);
     }
 
     /**
@@ -128,7 +134,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 })
                 .permitAll()
                 .and()
-                .csrf().disable();
+                .csrf().disable()
+                .exceptionHandling().authenticationEntryPoint(new AuthenticationEntryPoint() {
+            // 未登录直接返回信息，不重定向
+            @Override
+            public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
+                response.setContentType("applicaton/json;charset=utf-8");
+                PrintWriter out = response.getWriter();
+                ResultResp error = ResultResp.error("尚未登陆！即将跳转登录页");
+                response.setStatus(401);
+                if (e instanceof InsufficientAuthenticationException) {
+                    error.setMessage("账号已锁定，请联系管理员!");
+                }
+                // 将结果相应前端
+                out.write(new ObjectMapper().writeValueAsString(error));
+                out.flush();
+                out.close();
+            }
+        });
     }
 
     /**

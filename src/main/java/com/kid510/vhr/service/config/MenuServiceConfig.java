@@ -21,7 +21,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class MenuService {
+public class MenuServiceConfig {
 
     @Autowired
     private StringRedisTemplate redisTemplate;

@@ -2,7 +2,7 @@ package com.kid510.vhr.config;
 
 import com.kid510.vhr.pojo.Menu;
 import com.kid510.vhr.pojo.Role;
-import com.kid510.vhr.service.config.MenuService;
+import com.kid510.vhr.service.config.MenuServiceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
@@ -24,7 +24,7 @@ import java.util.List;
 public class CustomerFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
     @Autowired
-    private MenuService menuService;
+    private MenuServiceConfig menuServiceConfig;
     // 路径匹配
     AntPathMatcher antPathMatcher = new AntPathMatcher();
 
@@ -33,7 +33,7 @@ public class CustomerFilterInvocationSecurityMetadataSource implements FilterInv
         // 请求地址
         String requestUrl = ((FilterInvocation) o).getRequestUrl();
         // 所有菜单包含所需权限
-        List<Menu> menus = menuService.getAllMenusWithRole();
+        List<Menu> menus = menuServiceConfig.getAllMenusWithRole();
         for (Menu menu : menus) {
             // 匹配成功，返回所需权限列表
             if (antPathMatcher.match(menu.getUrl(), requestUrl)) {
