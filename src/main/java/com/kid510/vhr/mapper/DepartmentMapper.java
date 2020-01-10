@@ -1,6 +1,7 @@
 package com.kid510.vhr.mapper;
 
 import com.kid510.vhr.pojo.Department;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -18,4 +19,7 @@ public interface DepartmentMapper {
     int updateByPrimaryKey(Department record);
 
     List<Department> getAllDepartment(Integer pid);
+
+    @Select("select * from department")
+    List<Department> getAllDept();
 }

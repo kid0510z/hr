@@ -17,6 +17,20 @@ public class Department {
 
     private List<Department> children;
 
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", parentId=" + parentId +
+                ", depPath='" + depPath + '\'' +
+                ", enabled=" + enabled +
+                ", isParent=" + isParent +
+                ", children=" + children +
+                '}';
+    }
+
     public Integer getId() {
         return id;
     }

@@ -113,4 +113,5 @@
         FROM department
         WHERE parentId = #{pid}
     </select>
+
 </mapper>
